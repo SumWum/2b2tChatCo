@@ -6,7 +6,7 @@
 
   <groupId>2b2tChatCo</groupId>
   <artifactId>2b2tChatCo</artifactId>
-  <version>0.9</version>
+  <version>0.9.1</version>
 
   <name>2b2tChatCo</name>
   <url>https://github.com/SumWum/2b2tChatCo</url>
@@ -45,8 +45,20 @@
   </repositories>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <!-- <pluginManagement> --> <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom)  -->
       <plugins>
+        <plugin>
+            <groupId>com.coveo</groupId>
+            <artifactId>fmt-maven-plugin</artifactId>
+            <version>2.6.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>format</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.0.0</version>
@@ -77,6 +89,6 @@
           <version>2.8.2</version>
         </plugin>
       </plugins>
-    </pluginManagement>
+    <!-- </pluginManagement> -->
   </build>
 </project>

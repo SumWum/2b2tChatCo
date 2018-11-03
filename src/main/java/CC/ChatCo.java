@@ -1,38 +1,31 @@
 package CC;
 
-import com.google.googlejavaformat.java.Formatter;
 
-import cn.nukkit.utils.TextFormat;
-import cn.nukkit.Server;
-import cn.nukkit.Player;
-import cn.nukkit.event.Listener;
-import cn.nukkit.plugin.Plugin;
-import cn.nukkit.plugin.PluginManager;
-import cn.nukkit.plugin.PluginBase;
-import cn.nukkit.event.player.PlayerChatEvent;
-import cn.nukkit.event.player.PlayerMessageEvent;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
+import cn.nukkit.event.player.PlayerChatEvent;
+import cn.nukkit.plugin.PluginBase;
+import cn.nukkit.utils.TextFormat;
 
 public class ChatCo extends PluginBase implements Listener {
-    
-    public ChatCo() {}
-    
-    public void onLoad(){
-        getLogger().info("Loading ChatCo");
+
+  public ChatCo() {}
+
+  public void onLoad() {
+    getLogger().info("Loading ChatCo");
+  }
+
+  public void onEnable() {
+    getServer().getPluginManager().registerEvents(this, this);
+    getLogger().info("Enabled ChatCo");
+  }
+
+  @EventHandler
+  public void onChat(PlayerChatEvent e) {
+    String msg = e.getMessage();
+    if (msg.startsWith(">")) {
+      msg = TextFormat.GREEN + msg;
+      e.setMessage(msg);
     }
-    
-    public void onEnable(){
-        getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("Enabled ChatCo");
-    }
-    
-    @EventHandler
-    public void onChat(PlayerChatEvent e) {
-        String msg = e.getMessage();
-        if (msg.startsWith(">")) {
-            msg = TextFormat.GREEN + msg;
-            e.setMessage(msg);
-        }
-    }
+  }
 }
